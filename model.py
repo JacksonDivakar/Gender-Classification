@@ -8,7 +8,7 @@ import requests
 model = None
 
 # Construct the raw GitHub URL
-github_raw_url = "https://github.com/JacksonDivakar/Gender-Classification/raw/main/trainedmodel%20(6).pkl"
+github_raw_url = "https://github.com/JacksonDivakar/Gender-Classification/raw/main/trainedmodel%20(7).pkl"
 
 try:
     # Download the pickle file content using requests
