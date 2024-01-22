@@ -2,9 +2,27 @@ import streamlit as st
 import pickle as pk
 import pandas as pd
 import numpy as np
+import requests
 
-# Load the trained model
-model = pk.load(open("C:\\Users\\jacks\\Downloads\\trainedmodel.pkl", 'rb'))
+# Replace these with your GitHub username, repository name, and file name
+github_username = "JacksonDivakar"
+repository_name = "Gender-Classification"
+pickle_file_name = "trainedmodel.pkl"
+
+# Construct the raw GitHub URL
+github_raw_url = f"https://raw.githubusercontent.com/{github_username}/{repository_name}/main/{pickle_file_name}"
+
+try:
+    # Download the pickle file content using requests
+    response = requests.get(github_raw_url)
+
+    if response.status_code == 200:
+        # Load the data from the pickle file
+        model = pk.loads(response.content)
+    else:
+        st.error(f"Failed to retrieve pickle file. Status code: {response.status_code}")
+except Exception as e:
+    st.error(f"Error reading pickle file: {e}")
 
 # Function to classify face
 def classify_face(forehead_width, forehead_height, nose_wide, nose_long, lips_thin, distance_nose_to_lip_long):
