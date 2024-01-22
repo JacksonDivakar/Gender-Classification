@@ -4,13 +4,9 @@ import pandas as pd
 import numpy as np
 import requests
 
-# Replace these with your GitHub username, repository name, and file name
-github_username = "JacksonDivakar"
-repository_name = "Gender-Classification"
-pickle_file_name = "trainedmodel.pkl"
 
 # Construct the raw GitHub URL
-github_raw_url = f"https://raw.githubusercontent.com/{github_username}/{repository_name}/main/{pickle_file_name}"
+github_raw_url = "https://github.com/JacksonDivakar/Gender-Classification/raw/main/trainedmodel.pkl"
 
 try:
     # Download the pickle file content using requests
