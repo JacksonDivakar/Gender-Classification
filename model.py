@@ -49,10 +49,14 @@ st.title("Gender Classification App")
 # Get user input using choice buttons
 forehead_width = st.slider("Select forehead width (cm):", 11.4, 15.5, 13.2, step=0.1)
 forehead_height = st.slider("Select forehead height (cm):", 5.1, 7.1, 5.9, step=0.1)
-nose_wide = st.radio("Is the nose wide?", [0, 1], index=1)
-nose_long = st.radio("Is the nose long?", [0, 1], index=1)
-lips_thin = st.radio("Are the lips thin?", [0, 1], index=1)
-distance_nose_to_lip_long = st.radio("Is the distance from nose to lip long?", [0, 1], index=1)
+user_input1 = st.radio("Is the nose wide?", options=["Yes", "No"])
+nose_wide =  1 if user_input1 == "Yes" else 0
+user_input2 = st.radio("Is the nose long?", options=["Yes", "No"])
+nose_long =  1 if user_input2 == "Yes" else 0
+user_input3 = st.radio("Are the lips thin?", options=["Yes", "No"])
+lips_thin =  1 if user_input3 == "Yes" else 0
+user_input4 = st.radio("Is the distance from nose to lip long?", options=["Yes", "No"])
+distance_nose_to_lip_long =  1 if user_input4 == "Yes" else 0
 
 # Classify face and display result
 if st.button("Classify"):
