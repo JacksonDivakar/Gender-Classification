@@ -44,7 +44,7 @@ def classify_face(forehead_width, forehead_height, nose_wide, nose_long, lips_th
         st.warning("Model not loaded. Please check if the model was successfully loaded.")
 
 # Streamlit app
-st.title("Face Classification App")
+st.title("Gender Classification App")
 
 # Get user input using choice buttons
 forehead_width = st.slider("Select forehead width (cm):", 11.4, 15.5, 13.2, step=0.1)
