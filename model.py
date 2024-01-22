@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 import requests
 
+# Initialize the model variable
+model = None
 
 # Construct the raw GitHub URL
 github_raw_url = "https://github.com/JacksonDivakar/Gender-Classification/raw/main/trainedmodel.pkl"
@@ -22,21 +24,24 @@ except Exception as e:
 
 # Function to classify face
 def classify_face(forehead_width, forehead_height, nose_wide, nose_long, lips_thin, distance_nose_to_lip_long):
-    # Create a DataFrame from the input values
-    df = pd.DataFrame({
-        'forehead_width_cm': [forehead_width],
-        'forehead_height_cm': [forehead_height],
-        'nose_wide': [nose_wide],
-        'nose_long': [nose_long],
-        'lips_thin': [lips_thin],
-        'distance_nose_to_lip_long': [distance_nose_to_lip_long]
-    })
+    if model is not None:
+        # Create a DataFrame from the input values
+        df = pd.DataFrame({
+            'forehead_width_cm': [forehead_width],
+            'forehead_height_cm': [forehead_height],
+            'nose_wide': [nose_wide],
+            'nose_long': [nose_long],
+            'lips_thin': [lips_thin],
+            'distance_nose_to_lip_long': [distance_nose_to_lip_long]
+        })
 
-    # Make prediction
-    prediction = model.predict(df)[0]
-    
-    # Return the predicted gender
-    return 'Male' if prediction == 1 else 'Female'
+        # Make prediction
+        prediction = model.predict(df)[0]
+
+        # Return the predicted gender
+        return 'Male' if prediction == 1 else 'Female'
+    else:
+        st.warning("Model not loaded. Please check if the model was successfully loaded.")
 
 # Streamlit app
 st.title("Face Classification App")
