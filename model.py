@@ -39,7 +39,7 @@ def classify_face(forehead_width, forehead_height, nose_wide, nose_long, lips_th
         prediction = model.predict(df)[0]
 
         # Return the predicted gender
-        return 'Male' if prediction == 1 else 'Female'
+        return 'Male' if prediction == 0 else 'Female'
     else:
         st.warning("Model not loaded. Please check if the model was successfully loaded.")
 
